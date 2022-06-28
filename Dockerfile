@@ -28,7 +28,7 @@ RUN apt-get install -y --no-install-recommends \
     python3-dev python3-gdal python3-psycopg2 python3-ldap \
     python3-pip python3-pil python3-lxml python3-pylibmc \
     uwsgi uwsgi-plugin-python3 \
-    firefox-esr
+    firefox-esr gdal-bin
 
 RUN apt-get install -y devscripts build-essential debhelper pkg-kde-tools sharutils
 # RUN git clone https://salsa.debian.org/debian-gis-team/proj.git /tmp/proj
@@ -73,6 +73,13 @@ RUN chmod +x /usr/bin/celery-cmd
 
 RUN pip install --upgrade --no-cache-dir  --src /usr/src -r requirements.txt
 RUN pip install --upgrade  -e .
+
+# SETTING UP DEPENDENCIES FOR NEW IMPORT
+RUN pip3 install setuptools==58
+
+ARG GITHUB_TOKEN=$GITHUB_TOKEN
+
+RUN pip3 install git+https://${GITHUB_TOKEN}@github.com/geosolutions-it/geonode-importer.git@ISSUE_37#egg=geonode_importer --no-cache-dir
 
 # Cleanup apt update lists
 RUN rm -rf /var/lib/apt/lists/*
