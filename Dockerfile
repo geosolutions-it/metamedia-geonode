@@ -74,13 +74,6 @@ RUN chmod +x /usr/bin/celery-cmd
 RUN pip install --upgrade --no-cache-dir  --src /usr/src -r requirements.txt
 RUN pip install --upgrade  -e .
 
-# SETTING UP DEPENDENCIES FOR NEW IMPORT
-RUN pip3 install setuptools==58
-
-ARG GITHUB_TOKEN=$GITHUB_TOKEN
-
-RUN pip3 install git+https://${GITHUB_TOKEN}@github.com/geosolutions-it/geonode-importer.git@ISSUE_37#egg=geonode_importer --no-cache-dir
-
 # Cleanup apt update lists
 RUN rm -rf /var/lib/apt/lists/*
 

@@ -23,8 +23,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-      args:
-        - GITHUB_TOKEN=$GITHUB_TOKEN
     container_name: django4${COMPOSE_PROJECT_NAME}
     healthcheck:
       test: "curl --fail --silent --write-out 'HTTP CODE : %{http_code}\n' --output /dev/null http://127.0.0.1:8001/"
