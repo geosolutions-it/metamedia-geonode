@@ -35,7 +35,7 @@ RUN apt-get install -y devscripts build-essential debhelper pkg-kde-tools sharut
 # RUN cd /tmp/proj && debuild -i -us -uc -b && dpkg -i ../*.deb
 
 # Install pip packages
-RUN pip install pip --upgrade \
+RUN pip install pip==22.1.2  \
     && pip install pygdal==$(gdal-config --version).* \
         flower==0.9.4
 
