@@ -155,3 +155,11 @@ CELERY_TASK_QUEUES += (
 )
 DATABASE_ROUTERS = ["importer.db_router.DatastoreRouter"]
 SIZE_RESTRICTED_FILE_UPLOAD_ELEGIBLE_URL_NAMES += ('importer_upload',)
+ADDITIONAL_DATASET_FILE_TYPES = [{
+        "id": 'gpkg',
+        "label": 'GeoPackage',
+        "format": 'archive',
+        "ext": ['gpkg'],
+        "needsFiles": ['gpkg']
+    }]
+
