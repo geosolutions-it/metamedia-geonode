@@ -61,6 +61,7 @@ development.db
 development.db-journal
 local_settings.py
 
+.env
 .idea/
 .vscode/
 .vagrant/
