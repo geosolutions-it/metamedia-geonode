@@ -83,7 +83,7 @@ services:
 
   # Geoserver backend
   geoserver:
-    image: geonode/geoserver:2.19.6
+    image: geonode/geoserver:2.20.5
     build: ./docker/geoserver/
     container_name: geoserver4${COMPOSE_PROJECT_NAME}
     healthcheck:
@@ -102,7 +102,7 @@ services:
       - tmp:/tmp
     restart: unless-stopped
   data-dir-conf:
-    image: geonode/geoserver_data:2.19.6
+    image: geonode/geoserver_data:2.20.5
     container_name: gsconf4${COMPOSE_PROJECT_NAME}
     command: /bin/true
     volumes:
@@ -126,7 +126,7 @@ services:
 
   # Vanilla RabbitMQ service. This is needed by celery
   rabbitmq:
-    image: rabbitmq:3.7-alpine
+    image: rabbitmq:3.7-management-alpine
     container_name: rabbitmq4${COMPOSE_PROJECT_NAME}
     volumes:
       - rabbitmq:/var/lib/rabbitmq
